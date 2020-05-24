@@ -1,0 +1,8 @@
+node_modules
+npm-debug.log
+k8s
+terraform
+mocks
+stories
+terraform
+jest.config.jest

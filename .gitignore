@@ -1,0 +1,10 @@
+node_modules
+secrets
+build
+.DS_Store
+.env.production
+.terraform
+/.next
+/data
+/dist
+/yarn-error.log
