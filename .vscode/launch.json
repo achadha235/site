@@ -13,20 +13,6 @@
       "outFiles": ["${workspaceFolder}/dist/**/*.js"],
       "program": "${workspaceFolder}/server/index.ts",
       "envFile": "${workspaceFolder}/.env.development"
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Launch Program 2",
-      "skipFiles": ["<node_internals>/**"],
-      "program": "${workspaceFolder}/server/index.ts",
-      "envFile": "${workspaceFolder}/.env.dev"
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Launch IT",
-      "program": "${workspaceFolder}/helloworld.ts"
     }
   ]
 }

@@ -8,3 +8,4 @@ build
 /data
 /dist
 /yarn-error.log
+/storybook-static
