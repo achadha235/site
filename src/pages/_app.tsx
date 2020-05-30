@@ -9,6 +9,7 @@ import NextNprogress from "nextjs-progressbar";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../styles/theme";
+import Head from "next/head";
 declare global {
   interface Window {
     ethereum: { enable; selectedAddress };
@@ -28,32 +29,37 @@ export const AppContext = createContext<IAppContext>({
 });
 function MyApp({ Component, pageProps, apollo, router }) {
   return (
-    <ThemeProvider theme={theme}>
-      <MDXProvider
-        components={
-          {
-            wrapper: Layout,
-          } as any
-        }
-      >
-        <ApolloProvider client={apollo}>
-          <AppContext.Provider
-            value={{
-              name: pkg.name,
-              theme: tailwindConfig,
-            }}
-          >
-            <NextNprogress
-              color={"#29D"}
-              startPosition={0.5}
-              stopDelayMs={200}
-              height={3}
-            />
-            <Component key={router.route} {...pageProps} />
-          </AppContext.Provider>
-        </ApolloProvider>
-      </MDXProvider>
-    </ThemeProvider>
+    <>
+      <Head>
+        <title>Website</title>
+      </Head>
+      <ThemeProvider theme={theme}>
+        <MDXProvider
+          components={
+            {
+              wrapper: Layout,
+            } as any
+          }
+        >
+          <ApolloProvider client={apollo}>
+            <AppContext.Provider
+              value={{
+                name: pkg.name,
+                theme: tailwindConfig,
+              }}
+            >
+              <NextNprogress
+                color={tailwindConfig.theme.colors.blue[300]}
+                startPosition={0.5}
+                stopDelayMs={200}
+                height={3}
+              />
+              <Component key={router.route} {...pageProps} />
+            </AppContext.Provider>
+          </ApolloProvider>
+        </MDXProvider>
+      </ThemeProvider>
+    </>
   );
 }
 

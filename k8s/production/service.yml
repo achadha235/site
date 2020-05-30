@@ -3,9 +3,10 @@ kind: Service
 metadata:
   name: webserver-service
 spec:
-  selector:
-    app: webserver
+  type: NodePort
   ports:
     - port: 80
       targetPort: 3000
-  type: LoadBalancer
+      protocol: TCP
+  selector:
+    app: webserver

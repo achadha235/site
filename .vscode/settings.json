@@ -1,4 +1,9 @@
 {
+  "files.exclude": {
+    "**/*.js": false,
+    "**/*.jsx": false,
+    "**/next.config.js": false
+  },
   "terraform.languageServer": {
     "enabled": true,
     "args": []

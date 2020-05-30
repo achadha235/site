@@ -44,6 +44,7 @@ export const server = app.prepare().then(async () => {
     console.log("Connected to database");
   } catch (err) {
     console.error(err);
+    process.exit(1);
   }
 
   const apolloServer = new ApolloServer({
