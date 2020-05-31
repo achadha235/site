@@ -1,19 +1,37 @@
-import { TextField, Button } from "@material-ui/core";
+import useThunkReducer from "react-hook-thunk-reducer";
+
+import LoginStart from "./LoginStart";
+
+enum LoginActionType {
+  SubmitEmail = "SubmitEmail",
+}
+
+interface LoginState {
+  email?: string;
+}
+
+interface LoginAction {
+  type: LoginActionType;
+  payload?: any;
+}
+
+const initialState = {
+  email: null,
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case LoginActionType.SubmitEmail:
+      return { email: action.payload.email };
+    default:
+      throw new Error();
+  }
+}
 
 export default function LoginFlow() {
-  return (
-    <div className="w-full h-full flex flex-col justify-around items-center p-3">
-      <h3>Login</h3>
-      <TextField
-        className="max-w-md"
-        placeholder="Enter your email"
-        variant="outlined"
-        color="secondary"
-        fullWidth
-      />
-      <Button size="large" fullWidth color="primary" variant="outlined">
-        Continue
-      </Button>
-    </div>
+  const [state, dispatch] = useThunkReducer<LoginState, LoginAction>(
+    reducer,
+    initialState
   );
+  return <LoginStart />;
 }
