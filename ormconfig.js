@@ -5,7 +5,7 @@ module.exports = {
   username: "root",
   password: "password",
   database: "app",
-  synchronize: false,
+  synchronize: true,
   logging: false,
   entities: ["dist/server/entity/**/*.js"],
   migrations: ["dist/server/migration/**/*.js"],

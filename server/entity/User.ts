@@ -1,16 +1,27 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from "typeorm";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  BaseEntity,
+  OneToMany,
+  Index,
+  In,
+} from "typeorm";
+
+import { AuthToken } from "./AuthToken";
 
 @Entity()
 export class User extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ nullable: false })
-  firstName: string;
-
-  @Column({ nullable: true })
-  lastName: string;
-
-  @Column({ nullable: false })
+  @Index({ unique: true })
+  @Column({ nullable: false, unique: true })
   email: string;
+
+  @Column({ nullable: false })
+  verified: boolean;
+
+  @OneToMany((type) => AuthToken, (token) => token.id)
+  tokens: AuthToken[];
 }

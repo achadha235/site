@@ -1,5 +1,9 @@
 import { PubSub } from "apollo-server";
 
+import { User } from "../../server/entity/User";
+
+import emailer from "../email";
+
 export const pubsub = new PubSub();
 
 const USER_ADDED = "USER_ADDED";
@@ -11,12 +15,26 @@ const resolvers = {
     },
   },
   Mutation: {
-    async register(
-      root,
-      { firstName, lastName, email, password },
-      { models, pubsub }
-    ) {
-      return models.User.find({ limit: 1 });
+    async login(root, { email, password, createUser }, { models, pubsub }) {
+      if (createUser) {
+        let newUser = new User();
+        newUser.email = email;
+        newUser.verified = false;
+
+        let info = await emailer.sendMail({
+          from: '"Fred Foo 👻" <foo@example.com>', // sender address
+          to: email,
+          subject: "Hello ✔", // Subject line
+          text: "Hello world?", // plain text body
+          html: "<b>Hello world?</b>", // html body
+        });
+        console.log("Message sent: %s", info.messageId);
+
+        return newUser.save();
+      } else {
+        console.log(email);
+        return models.User.find({ email });
+      }
     },
   },
 

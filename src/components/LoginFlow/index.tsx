@@ -19,7 +19,7 @@ const initialState = {
   email: null,
 };
 
-function reducer(state, action) {
+function reducer(state: LoginState, action: LoginAction) {
   switch (action.type) {
     case LoginActionType.SubmitEmail:
       return { email: action.payload.email };

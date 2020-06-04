@@ -38,6 +38,7 @@
     "next-with-apollo": "^5.0.0",
     "nextjs-progressbar": "^0.0.4",
     "node-sass": "^4.13.1",
+    "nodemailer": "^6.4.8",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "pg": "^8.2.1",
     "react": "^16.13.1",
@@ -71,6 +72,7 @@
     "docker:build": "docker build -t webserver ./",
     "minikube:start": "yarn build && minikube start && eval $(minikube docker-env) && yarn docker:build && kubectl config use-context minikube && kubectl apply -f ./k8s/minikube && minikube service webserver-service && minikube dashboard",
     "minikube:stop": "minikube stop && minikube delete",
+    "mailcatcher": "docker run --name='mailcatcher' -d --publish=1080:1080 --publish=1025:1025 dockage/mailcatcher:0.6.5",
     "docker:push": "docker tag webserver gcr.io/abhi-250902/webserver && docker push gcr.io/abhi-250902/webserver",
     "db:start": "docker run --publish 54320:5432 --detach --name webserver-db -e POSTGRES_PASSWORD=password -e POSTGRES_USER=root -e POSTGRES_DB=app postgres:11",
     "db:stop": "docker container stop webserver-db && docker container rm webserver-db"

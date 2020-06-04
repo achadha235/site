@@ -15,6 +15,7 @@ import { createConnection } from "typeorm";
 import { execute, subscribe } from "graphql";
 import { SubscriptionServer } from "subscriptions-transport-ws";
 import { User } from "./entity/User";
+import { AuthToken } from "./entity/AuthToken";
 import { pubsub } from "./gql/resolvers";
 
 const port = config.PORT;
@@ -34,12 +35,13 @@ export const server = app.prepare().then(async () => {
       username: dbConfig.username,
       password: dbConfig.password,
       port: dbConfig.port,
-      synchronize: false,
-      logging: false,
-      entities: [User],
+      synchronize: true,
+      logging: true,
+      entities: [User, AuthToken],
     });
     models = {
       User: connection.getRepository(User),
+      AuthToken: connection.getRepository(AuthToken),
     };
     console.log("Connected to database");
   } catch (err) {
