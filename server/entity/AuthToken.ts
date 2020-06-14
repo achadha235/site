@@ -5,17 +5,17 @@ import {
   BaseEntity,
   OneToMany,
   ManyToOne,
-} from "typeorm";
-import { User } from "./User";
+} from 'typeorm'
+import { User } from './User'
 
 @Entity()
 export class AuthToken extends BaseEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  id: number
 
   @Column({ nullable: false })
-  token: string;
+  token: string
 
   @ManyToOne((type) => User, (user) => user.id)
-  user: User;
+  user: User
 }

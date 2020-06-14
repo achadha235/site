@@ -2,13 +2,13 @@ const {
   PHASE_DEVELOPMENT_SERVER,
   PHASE_PRODUCTION_BUILD,
   PHASE_PRODUCTION_SERVER,
-} = require("next/constants");
+} = require('next/constants')
 
-const withPlugins = require("next-compose-plugins");
-const withProgressBar = require("next-progressbar");
-const withTM = require("next-transpile-modules");
-const optimizedImages = require("next-optimized-images");
-const withMDX = require("@next/mdx")();
+const withPlugins = require('next-compose-plugins')
+const withProgressBar = require('next-progressbar')
+const withTM = require('next-transpile-modules')
+const optimizedImages = require('next-optimized-images')
+const withMDX = require('@next/mdx')()
 
 module.exports = withPlugins(
   [
@@ -19,9 +19,9 @@ module.exports = withPlugins(
   ],
 
   {
-    target: "server",
-    pageExtensions: ["ts", "tsx", "md", "mdx"],
-    distDir: ".next",
+    target: 'server',
+    pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
+    distDir: '.next',
     serverRuntimeConfig: {
       // Will only be available on the server side
     },
@@ -37,14 +37,14 @@ module.exports = withPlugins(
     // },
 
     [PHASE_DEVELOPMENT_SERVER]: {
-      distDir: ".next",
-      assetPrefix: "",
+      distDir: '.next',
+      assetPrefix: '',
       compress: false,
     },
     [PHASE_PRODUCTION_BUILD + PHASE_PRODUCTION_SERVER]: {
-      distDir: "build",
-      assetPrefix: "", // TODO: add asset prefix for deployed production bundle
+      distDir: 'build',
+      assetPrefix: '', // TODO: add asset prefix for deployed production bundle
       compress: true,
     },
   }
-);
+)

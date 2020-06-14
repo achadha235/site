@@ -1,4 +1,4 @@
-import { TextField, Button } from "@material-ui/core";
+import { TextField, Button } from '@material-ui/core'
 export default function LoginStart() {
   return (
     <div className="w-full h-full flex flex-col justify-around items-center p-3">
@@ -15,5 +15,5 @@ export default function LoginStart() {
         Continue
       </Button>
     </div>
-  );
+  )
 }

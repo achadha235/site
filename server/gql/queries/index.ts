@@ -1,4 +1,4 @@
-import { gql } from "apollo-boost";
+import { gql } from 'apollo-boost'
 
 export const getUserQuery = gql`
   query GetUseR($id: String!) {
@@ -9,4 +9,4 @@ export const getUserQuery = gql`
       verified
     }
   }
-`;
+`
