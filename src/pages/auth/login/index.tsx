@@ -1,5 +1,5 @@
-import LoginFlow from "components/LoginFlow";
-import { Grid } from "@material-ui/core";
+import LoginFlow from 'components/LoginFlow'
+import { Grid } from '@material-ui/core'
 export default function Login() {
   return (
     <Grid className="h-screen w-screen flex justify-center items-center">
@@ -7,5 +7,5 @@ export default function Login() {
         <LoginFlow />
       </div>
     </Grid>
-  );
+  )
 }

@@ -1,32 +1,34 @@
-import "styles/main.scss";
-import Layout from "components/Layout";
-import pkg from "../../package.json";
-import withApollo from "../../server/gql/withApollo";
-import { MDXProvider, MDXProviderProps, ComponentType } from "@mdx-js/react";
-import { createContext, useEffect } from "react";
-import tailwindConfig from "../../tailwind.config";
-import NextNprogress from "nextjs-progressbar";
-import { ApolloProvider } from "@apollo/react-hooks";
-import { ThemeProvider } from "@material-ui/core/styles";
-import theme from "../styles/theme";
-import Head from "next/head";
+import 'styles/main.scss'
+import 'react-typist/dist/Typist.css'
+import Layout from 'components/Layout'
+import pkg from '../../package.json'
+import withApollo from '../../server/gql/withApollo'
+import { MDXProvider, MDXProviderProps, ComponentType } from '@mdx-js/react'
+import { createContext, useEffect } from 'react'
+import tailwindConfig from '../../tailwind.config'
+import NextNprogress from 'nextjs-progressbar'
+import { ApolloProvider } from '@apollo/react-hooks'
+import { ThemeProvider } from '@material-ui/core/styles'
+import theme from '../styles/theme'
+import Head from 'next/head'
+
 declare global {
   interface Window {
-    ethereum: { enable; selectedAddress };
+    ethereum: { enable; selectedAddress }
   }
 }
 
 interface IAppContext {
-  name?: string;
-  theme: typeof tailwindConfig;
-  ethereum?: typeof window.ethereum;
-  ethAddress?: string;
+  name?: string
+  theme: typeof tailwindConfig
+  ethereum?: typeof window.ethereum
+  ethAddress?: string
 }
 
 export const AppContext = createContext<IAppContext>({
   name: pkg.name,
   theme: tailwindConfig,
-});
+})
 function MyApp({ Component, pageProps, apollo, router }) {
   return (
     <>
@@ -60,7 +62,7 @@ function MyApp({ Component, pageProps, apollo, router }) {
         </MDXProvider>
       </ThemeProvider>
     </>
-  );
+  )
 }
 
 // Only uncomment this method if you have blocking data requirements for
@@ -75,4 +77,4 @@ function MyApp({ Component, pageProps, apollo, router }) {
 //   return { ...appProps }
 // }
 
-export default withApollo(MyApp);
+export default withApollo(MyApp)

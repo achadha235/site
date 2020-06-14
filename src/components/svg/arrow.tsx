@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion'
 
 export default function () {
   const anim = {
@@ -7,7 +7,7 @@ export default function () {
       translateY: [3, 2, 1, 2, 3],
     },
     transition: { duration: 2, loop: Infinity },
-  };
+  }
 
   const anim2 = {
     animate: {
@@ -15,7 +15,7 @@ export default function () {
       translateY: [1, 2, 3, 3, 2, 1],
     },
     transition: { duration: 2, loop: Infinity },
-  };
+  }
 
   const anim3 = {
     animate: {
@@ -23,7 +23,7 @@ export default function () {
       translateY: [3, 2, 1, 2, 3],
     },
     transition: { duration: 2, loop: Infinity },
-  };
+  }
 
   return (
     <motion.svg
@@ -68,5 +68,5 @@ export default function () {
         />
       </motion.g>
     </motion.svg>
-  );
+  )
 }

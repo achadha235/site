@@ -1,8 +1,8 @@
-import * as React from "react";
-import Homepage from "../src/pages/index";
+import * as React from 'react'
+import Homepage from '../src/pages/index'
 export default {
-  title: "Home",
+  title: 'Home',
   component: Homepage,
-};
+}
 
-export const Page = () => <Homepage />;
+export const Page = () => <Homepage />
